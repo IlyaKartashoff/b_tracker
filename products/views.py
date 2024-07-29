@@ -1,9 +1,9 @@
 
-from products.models import Product
-from django.views.generic import TemplateView, ListView
+from products.models import Products
+from django.views.generic import ListView
 
 
 class ProductListView(ListView):
-    model = Product
+    model = Products
     template_name = 'products/index.html'
     context_object_name = 'products'

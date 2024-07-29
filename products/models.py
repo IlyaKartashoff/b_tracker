@@ -7,7 +7,7 @@ from django.db import models
 #     def __str__(self):
 #         return self.name
 
-class Product(models.Model):
+class Products(models.Model):
 
     # LENGTH_CHOICES = [
     #     (20, '20 cm'),
@@ -25,7 +25,7 @@ class Product(models.Model):
     #     (150, '150 cm'),
     # ]
     
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField('Наименование продукта',max_length=100, unique=True)
     # colour = models.CharField(max_length=100, blank=True, null=True)
     # size = models.IntegerField(choices=LENGTH_CHOICES)
     # quantity = models.PositiveIntegerField(blank=True, null=True)
@@ -35,6 +35,8 @@ class Product(models.Model):
     # purchase_prise = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, blank=True, null=True)
     # sale_prise = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, blank=True, null=True)
 
+    class Meta:
+        db_table = 'products'
 
     def __str__(self):
         return self.name
