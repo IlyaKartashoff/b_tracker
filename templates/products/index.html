@@ -3,12 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inventory Management PWA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            border-bottom: 1px solid #dee2e6;
+        }
+        .content {
+            padding: 20px;
+            padding-bottom: 70px; /* Make space for the bottom nav */
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 1px solid #dee2e6;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        .bottom-nav .nav-link {
+            padding: 10px 0;
+        }
+        .sidebar {
+            height: 100%;
+            width: 180px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: -180px;
+            background-color: #ffffff;
+            border-right: 1px solid #dee2e6;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+        }
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #ffffff;
+            border: none;
+            color: #000;
+            padding: 10px 15px;
+            text-align: left;
+        }
+        .openbtn:focus {
+            outline: none;
+        }
+        .main-content {
+            transition: margin-left .3s;
+            padding: 16px;
+        }
+        .section-title {
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h4>Hello</h4>
-    <h4>{% for product in products %}
-        <h5>{{product.name}}</h5>
-        {% endfor %}</h4>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#">Действие 1</a>
+    <a href="#">Действие 2</a>
+    <a href="#">Действие 3</a>
+</div>
+
+<div id="main" class="main-content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="openbtn" onclick="openNav()">☰ Меню</button>
+        <div class="mx-auto section-title" id="sectionTitle">Раздел</div>
+    </nav>
+
+    <div class="container content" id="content">
+        <!-- Content will be dynamically loaded here -->
+    </div>
+</div>
+
+<nav class="navbar navbar-light bg-light bottom-nav">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <div class="col text-center">
+                <a class="nav-link" href="#" id="productsBtn">Товары</a>
+            </div>
+            <div class="col text-center">
+                <a class="nav-link" href="#" id="statsBtn">Статистика</a>
+            </div>
+            <div class="col text-center">
+                <a class="nav-link" href="#" id="movementsBtn">Движения</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.left = "0";
+        document.getElementById("main").style.marginLeft = "180px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.left = "-180px";
+        document.getElementById("main").style.marginLeft= "0";
+    }
+
+    document.getElementById('productsBtn').addEventListener('click', function() {
+        document.getElementById('content').innerHTML = `
+            <h2>Категории и Товары</h2>
+            <ul>
+                <li>Категория 1
+                     {% for rpoduct in products %}
+                        <ul>
+                            <li>{{product}}</li>
+                        </ul>
+                     {% endfor %}
+                </li>
+                <li>Категория 2
+                    <ul>
+                        <li>Товар 2.1</li>
+                        <li>Товар 2.2</li>
+                    </ul>
+                </li>
+            </ul>
+        `;
+        document.getElementById('sectionTitle').innerText = 'Товары';
+    });
+
+    document.getElementById('statsBtn').addEventListener('click', function() {
+        document.getElementById('content').innerHTML = `
+            <h2>Статистика</h2>
+            <p>Баланс денежных средств: $1000</p>
+        `;
+        document.getElementById('sectionTitle').innerText = 'Статистика';
+    });
+
+    document.getElementById('movementsBtn').addEventListener('click', function() {
+        document.getElementById('content').innerHTML = `
+            <h2>Движения</h2>
+            <ul>
+                <li>Операция 1: Перемещение из склада A в склад B</li>
+                <li>Операция 2: Перемещение из склада B в склад C</li>
+            </ul>
+        `;
+        document.getElementById('sectionTitle').innerText = 'Движения';
+    });
+</script>
 </body>
 </html>
