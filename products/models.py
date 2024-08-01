@@ -16,7 +16,6 @@ class Category(models.Model):
 
 class Group_of_products(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Группа товаров')
-    
 
     class Meta:
         db_table = 'groups_of_products'
