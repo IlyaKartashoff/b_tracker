@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div>
+        {% if groups %}
+            {% for group in groups %}
+                <li>{{group}}</li>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock content %}
