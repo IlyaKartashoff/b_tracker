@@ -4,8 +4,7 @@ from common.views import TitleMixin
 
 
 
-class IndexView(TitleMixin, TemplateView):
+class MovesView(TitleMixin, TemplateView):
     
     template_name = 'main/index.html'
-    title = 'Список продуктов'
-
+    title = 'Движения'
