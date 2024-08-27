@@ -1,108 +1,29 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
-    {% comment "CSS main style" %}{% endcomment %}
-    <link rel="stylesheet" href="{% static "deps/css/main_style.css" %}">
-    
+    <!--Core CSS-->
+    <link rel="stylesheet" href="{% static "static\deps\css\reset.css" %}">
+    <!-- Custom CSS-->
+    {% block css %}
+        
+    {% endblock css %}
 </head>
 <body>
-
-<div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="#">Действие 1</a>
-    <a href="#">Действие 2</a>
-    <a href="#">Действие 3</a>
-</div>
-
-<div id="main" class="main-content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="openbtn" onclick="openNav()">☰ Меню</button>
-        <div class="mx-auto section-title" id="sectionTitle">Раздел</div>
-    </nav>
-
-    {% block content %}
-        <div class="container content" id="content">
-            <!-- Content will be dynamically loaded here -->
-        </div>
-    {% endblock content %}
-</div>
-
-<nav class="navbar navbar-light bg-light bottom-nav">
-    <div class="container-fluid">
-        <div class="row w-100">
-            <div class="col text-center">
-                <a class="nav-link" href="#" id="productsBtn">Товары</a>
-            </div>
-            <div class="col text-center">
-                <a class="nav-link" href="#" id="statsBtn">Статистика</a>
-            </div>
-            <div class="col text-center">
-                <a class="nav-link" href="#" id="movementsBtn">Движения</a>
-            </div>
-        </div>
+    <div class="content">
+        {% block content %}
+        {% endblock content %}
     </div>
-</nav>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    function openNav() {
-        document.getElementById("mySidebar").style.left = "0";
-        document.getElementById("main").style.marginLeft = "180px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.left = "-180px";
-        document.getElementById("main").style.marginLeft= "0";
-    }
-
-    document.getElementById('productsBtn').addEventListener('click', function() {
-        document.getElementById('content').innerHTML = `
-            <h2>Категории и Товары</h2>
-            <ul>
-                {% comment %} <li>Категория 1
-                     {% for rpoduct in products %}
-                        <ul>
-                            <li>{{product}}</li>
-                        </ul>
-                     {% endfor %}
-                </li> {% endcomment %}
-                <li>Категория 2
-                    <ul>
-                        <li>Товар 2.1</li>
-                        <li>Товар 2.2</li>
-                    </ul>
-                </li>
-            </ul>
-        `;
-        document.getElementById('sectionTitle').innerText = 'Товары';
-    });
-
-    document.getElementById('statsBtn').addEventListener('click', function() {
-        document.getElementById('content').innerHTML = `
-            <h2>Статистика</h2>
-            <p>Баланс денежных средств: $1000</p>
-        `;
-        document.getElementById('sectionTitle').innerText = 'Статистика';
-    });
-
-    document.getElementById('movementsBtn').addEventListener('click', function() {
-        document.getElementById('content').innerHTML = `
-            <h2>Движения</h2>
-            <ul>
-                <li>Операция 1: Перемещение из склада A в склад B</li>
-                <li>Операция 2: Перемещение из склада B в склад C</li>
-            </ul>
-        `;
-        document.getElementById('sectionTitle').innerText = 'Движения';
-    });
-</script>
+    <dvi class="bottom-nav">
+        <button type="button">Товары</button>
+        <button type="button">Статистика</button>
+        <button type="button">Движения</button>
+    </dvi>
+    
 </body>
 </html>

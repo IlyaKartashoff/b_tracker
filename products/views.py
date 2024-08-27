@@ -12,3 +12,4 @@ class ProductListView(ListView):
     model = Products
     template_name = 'products/products.html'
     context_object_name = 'products'
+    title = 'Список товаров'
