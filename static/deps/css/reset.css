@@ -11,6 +11,21 @@ p + p {
 ul {
     list-style: none;
 }
+.bottom-nav {
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #7e909b;
+    
+    
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 10px;
+     
+
+}
 
 img, svg, video {
     display: inline-block;
@@ -27,9 +42,20 @@ input, textarea, button, select {
 }
 
 /* button */
-/* button, input[type="submit"] {
+button  {
     display: inline-block;
     box-shadow: none;
     background-color: transparent;
     cursor: pointer;
-} */    
+    border: #84949e;
+}   
+/* .bottom-nav button + button {
+    margin-left: 20%;
+} */
+.bottom-nav > * {
+    width: 30%;
+}
+button img {
+    width: 30px;
+    height: inherit;
+}

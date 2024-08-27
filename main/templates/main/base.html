@@ -8,7 +8,7 @@
     <title>{{title}}</title>
     
     <!--Core CSS-->
-    <link rel="stylesheet" href="{% static "static\deps\css\reset.css" %}">
+    <link rel="stylesheet" href="{% static "deps\css\reset.css" %}">
     <!-- Custom CSS-->
     {% block css %}
         
@@ -19,11 +19,30 @@
         {% block content %}
         {% endblock content %}
     </div>
-    <dvi class="bottom-nav">
-        <button type="button">Товары</button>
-        <button type="button">Статистика</button>
-        <button type="button">Движения</button>
-    </dvi>
+    <div class="container">
+        <div class="bottom-nav">
+            <button type="button">
+                <a href="#">
+                    <img src="{% static "deps/icon/moves_w.png" %}" alt="Движения">
+                </a>
+            </button>
+            <button type="button">
+                <a href="{% url "products:products_list" %}">
+                    <img src="{% static "deps/icon/goods_b.png" %}" alt="Товары">
+                </a>
+            </button>
+            <button type="button">
+                <a href="#">
+                    <img src="{% static "deps/icon/statistic_b.png" %}" alt="Статистика">
+                </a>
+            </button>
+            
+            
+        </div>
+        
+
+    </div>
+    
     
 </body>
 </html>
