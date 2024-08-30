@@ -1,6 +1,25 @@
 {% extends "main/base.html" %}
 {% load static %}
 
+{% block css %}
+        <link href=" {% static "deps/css/style.css" %} " rel="stylesheet">
+{% endblock css %}
+
 {% block content %}
-{{title}}
+        
+        {% for group in groups %}
+                
+                {% for product in products %}
+                <div class='group-container'>
+                        
+                        <input type="checkbox" id='group1'>
+                        <label for="group1">{{group.name}}</label>
+                                
+                                <div class='products'>{{product.name}}</div>
+                        
+                </div>
+                {% endfor %}
+        {% endfor %}
+                        
+        
 {% endblock content %}

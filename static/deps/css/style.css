@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 /* Обшие стили */
 body {
     
@@ -24,14 +25,16 @@ p {
     border-bottom: 1px solid #dee2e6;
 }
 .content {
-    padding: 20px;
+    padding: 50px;
+    padding-left: 140px;
     padding-bottom: 70px; /* Make space for the bottom nav */
+    
 }
 .content-hidden {
     transform: translateX(100%); /* Сдвиг вправо */
     opacity: 0; /* Прозрачность */
 }
-.bottom-nav {
+/* .bottom-nav {
     position: fixed;
     bottom: 30;
     left: 30;
@@ -40,7 +43,7 @@ p {
     border-top: 1px solid #dee2e6;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     
-}
+} */
 .bottom-nav .nav-link {
     padding: 25px 0;
 }
@@ -89,3 +92,4 @@ p {
     font-size: 24px;
     font-weight: bold;
 }
+

@@ -17,7 +17,7 @@ ul {
     left: 0;
     right: 0;
     z-index: 100;
-    background-color: #7e909b;
+    background-color: #afc9da;
     
     
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
@@ -58,4 +58,50 @@ button  {
 button img {
     width: 30px;
     height: inherit;
+}
+content {
+    padding-left: 60px;
+}
+/* header */
+.main_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Высота хедера */
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Распределение элементов по горизонтали */
+    align-items: center; /* Центрирование элементов по вертикали */
+    padding: 0 20px; /* Отступы для внутреннего пространства */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для хедера */
+    z-index: 1000; /* Обеспечение видимости хедера над другими элементами */
+}
+.main_header .placeholder {
+    width: 30px; /* Фиксированная ширина для placeholder и иконки */
+    height: 30px;
+    background-color: #555; /* Цвет заглушки и иконки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Закругление иконки */
+}
+.main_header .options_icon {
+    width: 22px; /* Фиксированная ширина для placeholder и иконки */
+    height: 22px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-right: 40px;
+}
+.main_header .title {
+    font-size: 18px;
+    font-weight: lighter;
+    text-align: center;
+    flex-grow: 1; /* Растягивание заголовка для центрирования */
+    padding-left: 10px;
+    padding-right: 10px;
 }

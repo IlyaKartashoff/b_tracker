@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="{% static 'deps/icon/micon.png' %}">
     
     <!--Core CSS-->
     <link rel="stylesheet" href="{% static "deps\css\reset.css" %}">
@@ -15,6 +16,17 @@
     {% endblock css %}
 </head>
 <body>
+    <header class="main_header">
+        <div class='placeholder'>
+            ☰ 
+        </div>
+        <div class='title'>
+            {{title}}
+        </div>
+        <div class='options_icon'>
+            <img src="{% static "deps/icon/options.png" %}" alt="#">
+        </div>
+    </header>
     <div class="content">
         {% block content %}
         {% endblock content %}
