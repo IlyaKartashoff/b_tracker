@@ -1,5 +1,4 @@
 
-from unicodedata import category
 from django.db import models
 
 class Category(models.Model):

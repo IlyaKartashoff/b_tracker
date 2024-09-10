@@ -1,9 +1,7 @@
-
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
-from common.views import TitleMixin
 from products.models import Group_of_products, Products
+from products.logic import get_group_product_tree
+from common.views import TitleMixin
 
 
 class GroupListView(ListView):
@@ -26,5 +24,6 @@ class ProductListView(TitleMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['groups'] = Group_of_products.objects.all()
         context['products'] = Products.objects.all()
+        context['tree'] = get_group_product_tree()
         return context
          

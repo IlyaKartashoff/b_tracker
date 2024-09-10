@@ -34,16 +34,7 @@ p {
     transform: translateX(100%); /* Сдвиг вправо */
     opacity: 0; /* Прозрачность */
 }
-/* .bottom-nav {
-    position: fixed;
-    bottom: 30;
-    left: 30;
-    right: 30;
-    background-color: #4f5559;
-    border-top: 1px solid #dee2e6;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    
-} */
+
 .bottom-nav .nav-link {
     padding: 25px 0;
 }
