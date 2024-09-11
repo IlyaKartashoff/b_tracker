@@ -6,14 +6,43 @@
 {% endblock css %}
 
 {% block content %}
+
+        <div class="content-wrapper">
+               <div class="main-content" id="mainContent">
+                       {% comment %} <div id='content'>
+                               {% for group, products in tree.items %}
+                               <p>{{group.name}}</p>
+                                       {% for product in products %}
+                                       <p>_{{product}}</p>
+                                       {% endfor %}
+                               {% endfor %}
+               
+                               
+                       </div>  {% endcomment %}
+                        
+                       <div class="content-section" id="parentContent">
+                        <h2>Groups</h2>
+                        <ul class="item-list">
+                            {% for group, products in tree.items %}
+                            <li class="item" data-id="{{ forloop.counter }}">
+                                {{ group.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
         
-        <div id='content'>
-                {% for group, products in tree.items %}
-                <p>{{group.name}}</p>
-                        {% for product in products %}
-                        <p>_{{product}}</p>
-                        {% endfor %}
-                {% endfor %}
-        </div>                
+                    {% for group, products in tree.items %}
+                    <div class="content-section sub-content" id="subItemContent{{ forloop.counter }}">
+                        <h2>Products in {{ group.name }}</h2>
+                        <ul class="sub-item-list">
+                            {% for product in products %}
+                            <li class="sub-item">{{ product.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>                
+               </div> 
+        </div>
         
 {% endblock content %}

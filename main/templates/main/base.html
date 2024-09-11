@@ -14,6 +14,58 @@
     {% block css %}
         
     {% endblock css %}
+    <!--Script jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 120px); /* Высота экрана минус высота шапки и футера */
+            overflow: hidden;
+        }
+
+        .main-content {
+            position: absolute;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .item-list, .sub-item-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item, .sub-item {
+            padding: 10px;
+            background-color: #fff;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header class="main_header">
@@ -54,7 +106,31 @@
         
 
     </div>
+        {% comment "Скрипт анимации списка продуктов" %}{% endcomment %}
+        <script>
+            $(document).ready(function() {
+                let currentPosition = 0;
     
+                $('.item').click(function() {
+                    const itemId = $(this).data('id');
+                    const $currentSection = $('#parentContent');
+                    const $nextSection = $('#subItemContent' + itemId);
+    
+                    // Сдвигаем текущий контент влево
+                    $currentSection.animate({
+                        marginLeft: '-100%'
+                    }, 300, function() {
+                        // Скрываем текущий контент и показываем следующий
+                        $currentSection.hide();
+                        $nextSection.css('marginLeft', '100%').show().animate({
+                            marginLeft: '0'
+                        }, 300);
+                    });
+                });
+    
+                // Можно добавить логику для кнопки "Назад" аналогично тому, как было показано ранее
+            });
+        </script>
     
 </body>
 </html>
