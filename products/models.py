@@ -1,7 +1,7 @@
 
 from django.db import models
 
-class Category(models.Model):
+class Categories(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Категория товаров')
 
     class Meta:
@@ -44,7 +44,7 @@ class Products(models.Model):
     name = models.CharField('Наименование продукта',max_length=100, unique=True)
     group = models.ForeignKey(to=Group_of_products, related_name='products',
                                on_delete=models.DO_NOTHING, blank=True, null=True)
-    category = models.ForeignKey('Category', on_delete=models.DO_NOTHING,
+    category = models.ForeignKey('Categories', on_delete=models.DO_NOTHING,
                                  blank=True, null=True)
     colour = models.CharField(max_length=100, blank=True, null=True)
     size = models.CharField(max_length=250, choices=LENGTH_CHOICES, default=20)

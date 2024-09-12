@@ -1,0 +1,1 @@
+[{"model": "products.group_of_products", "pk": 1, "fields": {"name": "Букеты"}}, {"model": "products.group_of_products", "pk": 2, "fields": {"name": "Роза"}}]
