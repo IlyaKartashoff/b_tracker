@@ -1,12 +1,15 @@
 
-from products.models import Products, Group_of_products
+from django.db.models import Prefetch
+from products.models import Group_of_products, Products
 
-def get_group_product_tree():
-    """Возвращает словарь групп-продуктов"""
+def get_groups_and_products():
+    """Получение групп и продуктов с оптимизацией запросов"""
  
-    
-    group_product_dict = {
-    group: products for group in Group_of_products.objects.all()
-    if (products := group.products.all())
-}
-    return group_product_dict
+    products = Products.objects.all()
+    groups = Group_of_products.objects.prefetch_related(
+        Prefetch('products_objects', queryset=products, to_attr='all_products')
+    )
+
+    ungrouped_products = products.filter(group__isnull=True)
+    tree_for_view = {group: group.all_products for group in groups}
+    return tree_for_view, ungrouped_products

@@ -42,7 +42,7 @@ class Products(models.Model):
         ('150 cm', '150 cm'),
     ]
     name = models.CharField('Наименование продукта',max_length=100, unique=True)
-    group = models.ForeignKey(to=Group_of_products, related_name='products',
+    group = models.ForeignKey(to=Group_of_products, related_name='products_objects',
                                on_delete=models.DO_NOTHING, blank=True, null=True)
     category = models.ForeignKey('Categories', on_delete=models.DO_NOTHING,
                                  blank=True, null=True)

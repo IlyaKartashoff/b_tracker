@@ -14,76 +14,88 @@
 {% endblock option_bar %}
     
 {% block content %}
-        
-
-        <div class="content-wrapper">
-               <div class="main-content" id="mainContent">
-                       <div class="content-section" id="parentContent">
-                        <h2>Groups</h2>
-                        <ul class="item-list">
-                            {% for group, products in tree.items %}
-                            <li class="item" data-id="{{ forloop.counter }}">
-{% comment %} >                               <img src="{% static 'deps/icon/group.png' %}" alt="Icon"> {% endcomment %}
-
-                                {{ group.name }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-        
+    <div class="content-wrapper">
+        <div class="main-content" id="mainContent">
+            <!-- Секция для групп -->
+            <div class="content-section" id="parentContent">
+                <h2>Groups</h2>
+                <ul class="item-list">
                     {% for group, products in tree.items %}
-                    <div class="content-section sub-content" id="subItemContent{{ forloop.counter }}">
-                        <button class="back-button">Назад</button>
-                        <h2>Products in {{ group.name }}</h2>
-                        <ul class="sub-item-list">
-                            {% for product in products %}
-                            <li class="sub-item">{{ product.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                        <li class="item" data-id="{{ forloop.counter }}">
+                            {{ group.name }}
+                        </li>
                     {% endfor %}
-                </div>                
-               </div> 
-        </div>
-        
+                </ul>
+            </div>
+
+            <!-- Секция для продуктов без группы -->
+            <div class="content-section" id="ungroupedProducts">
+                <h2>Ungrouped Products</h2>
+                <ul class="sub-item-list">
+                    {% for product in ungrouped_products %}
+                        <li class="sub-item">{{ product.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Секции для продуктов в группах -->
+            {% for group, products in tree.items %}
+            <div class="content-section sub-content" id="subItemContent{{ forloop.counter }}">
+                <button class="back-button">Назад</button>
+                <h2>Products in {{ group.name }}</h2>
+                <ul class="sub-item-list">
+                    {% for product in products %}
+                        <li class="sub-item">{{ product.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>                
+    </div> 
 {% endblock content %}
 {% block script %}
 <script>
-        $(document).ready(function() {
-            let currentSection = $('#parentContent');
-        
-            $('.item').click(function() {
-                const itemId = $(this).data('id');
-                const $nextSection = $('#subItemContent' + itemId);
-        
-                // Сдвигаем текущий контент влево
-                currentSection.animate({
-                    marginLeft: '-90%'
-                }, 300, function() {
-                    // Скрываем текущий контент и показываем следующий
-                    currentSection.hide();
-                    $nextSection.css('marginLeft', '90%').show().animate({
-                        marginLeft: '0'
-                    }, 300);
-                    currentSection = $nextSection; // Обновляем текущую секцию
-                });
+    $(document).ready(function() {
+        let currentSection = $('#parentContent');
+
+        // Обработка клика по группе
+        $('.item').click(function() {
+            const itemId = $(this).data('id');
+            const $nextSection = $('#subItemContent' + itemId);
+
+            // Сдвигаем текущий контент влево
+            currentSection.animate({
+                marginLeft: '-90%'
+            }, 300, function() {
+                currentSection.hide();
+                $nextSection.css('marginLeft', '90%').show().animate({
+                    marginLeft: '0'
+                }, 300);
+                currentSection = $nextSection; 
             });
-        
-            $('.back-button').click(function() {
-                const $previousSection = $('#parentContent');
-        
-                // Сдвигаем текущий контент вправо
-                currentSection.animate({
-                    marginLeft: '90%'
-                }, 300, function() {
-                    // Скрываем текущий контент и показываем предыдущий
-                    currentSection.hide();
-                    $previousSection.show().animate({
-                        marginLeft: '0'
-                    }, 300);
-                    currentSection = $previousSection; // Обновляем текущую секцию
-                });
-            });
+
+            // Скрываем секцию с продуктами без группы
+            $('#ungroupedProducts').hide();
         });
-    </script>
+
+        // Обработка кнопки "Назад"
+        $('.back-button').click(function() {
+            const $previousSection = $('#parentContent');
+
+            // Сдвигаем текущий контент вправо
+            currentSection.animate({
+                marginLeft: '90%'
+            }, 300, function() {
+                currentSection.hide();
+                $previousSection.show().animate({
+                    marginLeft: '0'
+                }, 300);
+                currentSection = $previousSection;
+            });
+
+            // Показываем секцию с продуктами без группы
+            $('#ungroupedProducts').show();
+        });
+    });
+</script>
 {% endblock script %}
