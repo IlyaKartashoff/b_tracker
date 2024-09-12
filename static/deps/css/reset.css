@@ -61,11 +61,22 @@ button img {
 }
 content {
     padding-left: 60px;
+    padding-top: 70px;
 }
+
 /* header */
+/* Стили для серого блока */
+.top-block {
+    position: fixed;
+    background-color: #777b7e; /* Серый цвет */
+    height: 50px; /* Высота блока */
+    width: 100%; /* Ширина блока на всю ширину экрана */
+    z-index: 1000;
+
+}
 .main_header {
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     width: 100%;
     height: 60px; /* Высота хедера */
@@ -105,3 +116,15 @@ content {
     padding-left: 10px;
     padding-right: 10px;
 }
+.options-bar .prod-option {
+    display: flex;
+    gap: 30px;
+} 
+
+.options-bar .prod-option a {
+    color: rgb(66, 102, 133);
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: solid;
+} 

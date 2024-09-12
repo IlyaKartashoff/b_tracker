@@ -3,28 +3,28 @@
 
 {% block css %}
         <link href=" {% static "deps/css/style.css" %} " rel="stylesheet">
+        <link href=" {% static "deps/css/product_items.css" %} " rel="stylesheet">
 {% endblock css %}
 
+{% block option_bar %}
+    <div class='prod-option'>
+        <a href="#">+товар</a>
+        <a href="#">+группа</a>
+    </div>
+{% endblock option_bar %}
+    
 {% block content %}
+        
 
         <div class="content-wrapper">
                <div class="main-content" id="mainContent">
-                       {% comment %} <div id='content'>
-                               {% for group, products in tree.items %}
-                               <p>{{group.name}}</p>
-                                       {% for product in products %}
-                                       <p>_{{product}}</p>
-                                       {% endfor %}
-                               {% endfor %}
-               
-                               
-                       </div>  {% endcomment %}
-                        
                        <div class="content-section" id="parentContent">
                         <h2>Groups</h2>
                         <ul class="item-list">
                             {% for group, products in tree.items %}
                             <li class="item" data-id="{{ forloop.counter }}">
+{% comment %} >                               <img src="{% static 'deps/icon/group.png' %}" alt="Icon"> {% endcomment %}
+
                                 {{ group.name }}
                             </li>
                             {% endfor %}
@@ -33,6 +33,7 @@
         
                     {% for group, products in tree.items %}
                     <div class="content-section sub-content" id="subItemContent{{ forloop.counter }}">
+                        <button class="back-button">Назад</button>
                         <h2>Products in {{ group.name }}</h2>
                         <ul class="sub-item-list">
                             {% for product in products %}
@@ -46,3 +47,43 @@
         </div>
         
 {% endblock content %}
+{% block script %}
+<script>
+        $(document).ready(function() {
+            let currentSection = $('#parentContent');
+        
+            $('.item').click(function() {
+                const itemId = $(this).data('id');
+                const $nextSection = $('#subItemContent' + itemId);
+        
+                // Сдвигаем текущий контент влево
+                currentSection.animate({
+                    marginLeft: '-90%'
+                }, 300, function() {
+                    // Скрываем текущий контент и показываем следующий
+                    currentSection.hide();
+                    $nextSection.css('marginLeft', '90%').show().animate({
+                        marginLeft: '0'
+                    }, 300);
+                    currentSection = $nextSection; // Обновляем текущую секцию
+                });
+            });
+        
+            $('.back-button').click(function() {
+                const $previousSection = $('#parentContent');
+        
+                // Сдвигаем текущий контент вправо
+                currentSection.animate({
+                    marginLeft: '90%'
+                }, 300, function() {
+                    // Скрываем текущий контент и показываем предыдущий
+                    currentSection.hide();
+                    $previousSection.show().animate({
+                        marginLeft: '0'
+                    }, 300);
+                    currentSection = $previousSection; // Обновляем текущую секцию
+                });
+            });
+        });
+    </script>
+{% endblock script %}

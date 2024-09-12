@@ -9,6 +9,7 @@ body {
     font-size: 16px;
 
 }
+
 .container {
     max-width: 970px;
     padding: 0 15px;
@@ -26,8 +27,9 @@ p {
 }
 .content {
     padding: 50px;
+    padding-top: 100px;
     padding-left: 140px;
-    padding-bottom: 70px; /* Make space for the bottom nav */
+    padding-bottom: 70px; /* Отступ для bottom-nav */
     
 }
 .content-hidden {
@@ -83,4 +85,15 @@ p {
     font-size: 24px;
     font-weight: bold;
 }
+.options-bar .movements-bar {
+    display: flex;
+    gap: 30px;
+} 
 
+.options-bar .movements-bar a {
+    color: rgb(66, 102, 133);
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: solid;
+} 
