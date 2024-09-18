@@ -50,8 +50,8 @@ class Products(models.Model):
     size = models.CharField(max_length=250, choices=LENGTH_CHOICES, default=20)
     quantity = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='product_photos/', blank=True)
-    purchase_prise = models.DecimalField(default=0.0, max_digits=7, decimal_places=2)
-    sale_prise = models.DecimalField(default=0.0, max_digits=7, decimal_places=2)
+    purchase_price = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, verbose_name='Себестоимость')
+    sale_price = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, verbose_name='Цена')
 
     class Meta:
         db_table = 'products'

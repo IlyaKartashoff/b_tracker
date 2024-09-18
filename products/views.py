@@ -1,6 +1,8 @@
-from django.db.models import Prefetch
-from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+
+from django.forms import BaseModelForm
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, TemplateView
 from products.models import Group_of_products, Products
 from products.logic import get_groups_and_products
 from common.views import TitleMixin
@@ -24,3 +26,15 @@ class ProductTreeListView(TitleMixin, TemplateView):
         context['tree'] = tree
         context['ungrouped_products'] = ungrouped_products
         return context
+
+# class ProductCreateView(TitleMixin,CreateView):
+#     title = "Создание товара"
+#     model = Products
+#     fields = [
+#         'name', 'group', 'category', 'colour', 'size', 'quantity', 'image', 'purchase_price', 'sale_price'
+#     ]
+#     template_name = 'products/create_product.html'
+#     success_url = reverse_lazy('products_list')
+
+#     def form_valid(self, form: BaseModelForm) -> HttpResponse:
+#         return super().form_valid(form)

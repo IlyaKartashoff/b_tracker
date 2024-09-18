@@ -3,14 +3,14 @@
         "model": "products.group_of_products",
         "pk": 1,
         "fields": {
-            "name": "Букеты"
+            "name": "Р‘СѓРєРµС‚С‹"
         }
     },
     {
         "model": "products.group_of_products",
         "pk": 2,
         "fields": {
-            "name": "Роза"
+            "name": "Р РѕР·Р°"
         }
     }
 ]
