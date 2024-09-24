@@ -7,9 +7,38 @@ body {
     background-color: #f8f9fa;
     font-weight: 400;
     font-size: 16px;
+    margin: 0;
 
 }
+input, select {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
 
+input:focus {
+    border-color: #007BFF;
+    background: rgba(255, 255, 255, 0.8);
+    outline: none;
+}
+button[type='submit'] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7ea1c6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button[type='submit']:hover {
+    background-color: #b8d8ff;
+    
+}
 .container {
     max-width: 970px;
     padding: 0 15px;
@@ -85,7 +114,7 @@ p {
     font-size: 24px;
     font-weight: bold;
 }
-.options-bar .movements-bar {
+.options-bar {
     display: flex;
     gap: 30px;
 } 
@@ -97,3 +126,10 @@ p {
     line-height: inherit;
     text-decoration: solid;
 } 
+.options-bar .detail-prod-bar a {
+    color: rgb(66, 102, 133);
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: solid;
+}

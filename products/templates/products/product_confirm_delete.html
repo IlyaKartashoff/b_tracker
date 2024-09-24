@@ -1,0 +1,62 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "deps\css\style.css" %}">
+    <link rel="stylesheet" href="{% static "deps\css\product_detail.css" %}">
+    
+{% endblock css %}
+
+{% block option_bar %}
+    <a href="#">Купить</a>
+    <a href="#">Продать</a>
+    <a href="#">Закупка</a>
+    <a href="#">Движения</a>
+{% endblock option_bar %}
+
+{% block content %}
+<div class='product_detail'>
+    
+    <div class="product_detail_item">
+        <h5>Наименование</h5>
+            <h1>{{delete_object.name}}</h1>
+    </div>
+    <div class="product_detail_item">
+        <h5>Группа товара</h5>
+            <h2>{{delete_object.group}}</h2>
+    </div>
+    <div class="product_detail_item">
+        <h5>Категория</h5>
+            <h2>{{delete_object.category}}</h2>
+    </div>
+    <div class="product_detail_item">
+        <h5>Количество</h5>
+            <h2>{{delete_object.quantity}}</h2>     
+    </div>
+    <div class="product_detail_item">
+        <h5>Размер</h5>
+            <h2>{{delete_object.size}}</h2>
+    </div>
+    <div class="product_detail_item">
+        <h5>Себестоимость/Закупка</h5>    
+            <h2>{{delete_object.purchase_price}}</h2>
+    </div>
+    <div class="product_detail_item">
+        <h5>Цена</h5>    
+            <h2>{{delete_object.sale_price}}</h2>
+    </div>
+</div>
+
+<div class="delete_attention">
+    <h1>Вы уверены, что хотите удалить {{delete_object.name}}?</h1>
+    <form method='post'>{% csrf_token %}
+        <button type="submit">Да, удалить</button>
+        <a href="{% url "products:products_list" %}">Отмена</a>
+    </form>
+    
+
+
+</div>    
+
+
+{% endblock content %}

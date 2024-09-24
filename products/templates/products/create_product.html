@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block css %}
+        <link href=" {% static "deps/css/reset.css" %} " rel="stylesheet">
+        <link href=" {% static "deps/css/style.css" %} " rel="stylesheet">
+        
+{% endblock css %}
+
+{% block content %}
+  <h2>Создать новый товар</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Создать</button>
+  </form>
+{% endblock %}

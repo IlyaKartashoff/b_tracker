@@ -3,6 +3,18 @@ h1, h2, h3, h3, h4, h5, h6, p {
     font-weight: inherit;
     line-height: inherit;
 }
+h1 {
+    font-size: larger;
+}
+h5 {
+    font-size: smaller;
+    color: #555;
+}
+a {
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;
+}
 
 p + p {
     margin-top: 1em;
@@ -67,6 +79,8 @@ content {
 /* header */
 /* Стили для серого блока */
 .top-block {
+    padding-left: 0;
+    padding-top: 0;
     position: fixed;
     background-color: #777b7e; /* Серый цвет */
     height: 50px; /* Высота блока */
@@ -122,6 +136,18 @@ content {
 } 
 
 .options-bar .prod-option a {
+    color: rgb(66, 102, 133);
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: solid;
+}
+.options-bar .detail-prod-bar {
+    display: flex;
+    gap: 30px;
+} 
+
+.options-bar .detail-prod-bar a {
     color: rgb(66, 102, 133);
     font-size: inherit;
     font-weight: inherit;

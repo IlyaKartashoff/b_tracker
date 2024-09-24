@@ -1,0 +1,54 @@
+.options-bar {
+    padding-left: 0;
+    padding-top: 100px;
+    position: fixed;
+    
+    display: flex;
+    justify-content: center;   /* Горизонтальное центрирование */
+    align-items: center;       /* Вертикальное центрирование */
+    gap: 50px;                 /* Отступы между элементами */
+    height: 200px; 
+    
+    height: 65px;
+    width: 100%;
+    background-color: rgb(223, 213, 223);
+}
+.product_detail {
+    padding-left: 70px;
+}
+.product_detail_item {
+    
+    border-bottom: 2px;
+    border-color: rgb(145, 145, 145);
+}
+.product_detail_item h1, h2 {
+    background-color: rgb(237, 237, 237);
+    box-shadow: 0 0 0 10px rgb(237, 237, 237);
+    margin: 20px;
+    white-space: nowrap;         /* Запрещает перенос текста */
+    overflow: hidden;            /* Скрывает часть текста, которая не помещается */
+    text-overflow: ellipsis;
+    
+    
+}
+.product_detail_item h5 {
+    margin: 10px
+}
+.delete_attention button {
+    background-color: rgb(244, 96, 115);
+}
+.back_button a {
+    border-bottom: 1px;
+    background-image: url(../icon/back_icon.png);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 19px 19px;
+    padding-left: 30px;
+}
+.content {
+    padding: 50px;
+    padding-top: 200px;
+    padding-left: 140px;
+    padding-bottom: 70px; /* Отступ для bottom-nav */
+    
+}
