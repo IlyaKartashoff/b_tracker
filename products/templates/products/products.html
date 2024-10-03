@@ -9,7 +9,7 @@
 {% block option_bar %}
     <div class='prod-option'>
         <a href="{% url 'products:product_new' %}">+товар</a>
-        <a href="#">+группа</a>
+        <a href="{% url "products:group_new" %}">+группа</a>
     </div>
 {% endblock option_bar %}
     

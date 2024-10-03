@@ -8,13 +8,26 @@ from products.logic import get_groups_and_products
 from common.views import TitleMixin
 
 
-class GroupListView(ListView):
+# class GroupListView(ListView):
+#     model = Group_of_products
+#     template_name = 'main/products.html'
+#     context_object_name = 'groups'
+
+class GroupCreateView(TitleMixin, CreateView):
+    """Создает грппу товаров"""
+    title = 'Создание группы'
+    template_name = 'products/create_group.html'
     model = Group_of_products
-    template_name = 'main/products.html'
-    context_object_name = 'groups'
+    fields = [
+        'name',
+        'parent'
+    ]
+    success_url = reverse_lazy('products:products_list')
+
 
         
 class ProductTreeListView(TitleMixin, TemplateView):
+    """Отображает список товаров по группам"""
     template_name = 'products/products.html'
     title = 'Список продуктов'
 
@@ -28,6 +41,7 @@ class ProductTreeListView(TitleMixin, TemplateView):
         return context
 
 class ProductCreateView(TitleMixin,CreateView):
+    """Создает новый продукт"""
     title = "Создание товара"
     model = Products
     fields = [
@@ -41,12 +55,14 @@ class ProductCreateView(TitleMixin,CreateView):
         return super().form_valid(form)
 
 class ProductDetailView(TitleMixin,DetailView):
+    """Карточка товара"""
     title = 'Детальная информация'
     model = Products
     context_object_name = 'product'
     template_name = 'products/product_detail.html'
 
 class ProductDeleteView(TitleMixin,DeleteView):
+    """Удаляет продукт"""
     title = 'Подтверждение удаления'
     model = Products
     template_name = 'products/product_confirm_delete.html'
