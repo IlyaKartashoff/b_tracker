@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "deps\css\style.css" %}">
+    <link rel="stylesheet" href="{% static "deps\css\product_detail.css" %}">
+{% endblock css %}
+
+{% block option_bar %}
+    <div class="detail-prod-bar">
+        <a href="#">Купить</a>
+        <a href="#">Продать</a>
+        <a href="#">Закупка</a>
+        <a href="#">Движения</a>
+    </div>
+{% endblock option_bar %}
+{% block content %}
+<div>
+    <form method="post" enctype='multipart/form-data'>
+
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+{% endblock content %}
+

@@ -19,6 +19,9 @@
 <div class="back_button">
     <a href="{{ request.META.HTTP_REFERER }}">Назад</a>
 </div>
+<div class="product_edit">
+    <a href="{% url "products:product_edit" product.id %}">Редактировать</a>
+</div>
 <div class='product_detail'>
     
     <div class="product_detail_item">

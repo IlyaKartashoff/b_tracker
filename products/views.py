@@ -1,8 +1,10 @@
 
+
+from urllib import request
 from django.forms import BaseModelForm
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView
+from django.views.generic import CreateView, DeleteView, DetailView, TemplateView, UpdateView
 from products.models import Group_of_products, Products
 from products.logic import get_groups_and_products
 from common.views import TitleMixin
@@ -60,6 +62,18 @@ class ProductDetailView(TitleMixin,DetailView):
     model = Products
     context_object_name = 'product'
     template_name = 'products/product_detail.html'
+    
+class ProductEditView(TitleMixin, UpdateView):
+    """Изменить продукт"""
+    title = "Изменить"
+    model = Products
+    fields = ['name', 'group', 'category', 'colour', 'size', 'quantity', 'image', 'purchase_price', 'sale_price']
+    context_object_name = 'edit_object'
+    template_name = 'products/product_edit.html'
+    success_url = reverse_lazy('products:products_list')
+    
+
+
 
 class ProductDeleteView(TitleMixin,DeleteView):
     """Удаляет продукт"""
