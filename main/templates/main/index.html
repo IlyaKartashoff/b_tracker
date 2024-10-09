@@ -3,7 +3,7 @@
 
 {% block css %}
         <link href=" {% static "deps/css/style.css" %} " rel="stylesheet">
-        <link href=" {% static "deps/css/product_items.css" %} " rel="stylesheet">
+        <link href=" {% static "deps/css/movement_items.css" %} " rel="stylesheet">
 {% endblock css %}
 
 {% block option_bar %}
@@ -16,20 +16,14 @@
 {% endblock option_bar %}
 
 {% block content %}
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-<P>content</P>
-
-  
+        <div class="content-wrapper">
+                {% for movement in movements %}
+                        <li class="item">
+                                <a href="{% url "main:detail" movement.id %}">
+                                        <p>{{movement.movement_type}} - {{ movement.product.name }}--------{{ movement.created_timestamp|date:"d-m-Y" }}</p>
+                                </a>
+                        </li>
+                        
+                {% endfor %}
+        </div> 
 {% endblock content %}

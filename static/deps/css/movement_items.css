@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.content-wrapper {
+    margin-top: 90px;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px); /* Высота экрана минус высота шапки и футера */
+    overflow: hidden;
+}
+
+.main-content {
+    position: absolute;
+    width: 100%;
+    
+    transition: transform 0.3s ease;
+}
+
+.item-list, .sub-item-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 7px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    background-image: url(../icon/group.png); /* Иконка через background-image */
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 19px 19px; /* Задайте размер иконки */
+    padding-left: 30px; /* Добавьте отступ слева для текста */
+}
+.sub-item {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 7px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    background-image: url(../icon/product.png); /* Иконка через background-image */
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 19px 19px; /* Задайте размер иконки */
+    padding-left: 30px; /* Добавьте отступ слева для текста */
+}
+
+
+.sub-content {
+    display: none;
+}
+.options-bar {
+    padding-left: 0;
+    padding-top: 100px;
+    position: fixed;
+    
+    display: flex;
+    justify-content: center;   /* Горизонтальное центрирование */
+    align-items: center;       /* Вертикальное центрирование */
+    gap: 50px;                 /* Отступы между элементами */
+    height: 200px; 
+    
+    height: 65px;
+    width: 100%;
+    background-color: rgb(223, 213, 223);
+}
+
+.options-bar .prod-option {
+    display: flex;
+    gap: 30px;
+} 
+
+.options-bar .prod-option a {
+    color: rgb(66, 102, 133);
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: solid;
+}   

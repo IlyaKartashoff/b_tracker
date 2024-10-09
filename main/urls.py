@@ -1,10 +1,9 @@
 from django.urls import path
 # from products.views import GroupListView, ProductListView
-from main.views import MovesView
+from main.views import MovesView, MovementsDetailView
 app_name = 'main'
 
 urlpatterns = [
     path('', MovesView.as_view(), name='index'),
-    #path('products/', ProductListView.as_view(), name='products'),
-
+    path('movement/<int:pk>/', MovementsDetailView.as_view(), name='detail'),
 ]

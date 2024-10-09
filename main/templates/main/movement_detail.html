@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "deps\css\style.css" %}">
+    <link rel="stylesheet" href="{% static "deps\css\product_detail.css" %}">
+{% endblock css %}
+
+{% block option_bar %}
+    <div class="detail-prod-bar">
+        <a href="#">Купить</a>
+        <a href="#">Продать</a>
+        <a href="#">Закупка</a>
+        <a href="#">Движения</a>
+    </div>
+{% endblock option_bar %}
+
+{% block content %}
+<div class="back_button">
+    <a href="{{ request.META.HTTP_REFERER }}">Назад</a>
+</div>
+
+<div class='product_detail'>
+    
+    <div class="product_detail_item">
+        <h5>Тип операции</h5>
+            <h1>{{ movement.movement_type }}</h1>
+    </div>
+    <div class="product_detail_item">
+        <h5>Товар</h5>
+            <h2>{{ movement.product.name }}</h2>
+    </div>
+    <div class="product_detail_item">
+        <h5>Время</h5>
+            <h2>{{ movement.created_timestamp }}</h2>
+    </div>
+    
+</div>        
+<a href="#">Удалить</a>
+
+{% endblock content %}
