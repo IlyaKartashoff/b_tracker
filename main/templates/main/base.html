@@ -24,53 +24,78 @@
 </head>
 <body>
     <div class="top-block"></div>
-    <header class="main_header">
-        <div class='placeholder'>
-            ☰ 
-        </div>
-        <div class='title'>
-            {{title}}
-        </div>
-        <div class='options_icon'>
-            <img src="{% static "deps/icon/options.png" %}" alt="#">
-        </div>
-    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#">Начало</a></li>
+            <li><a href="#">Поиск</a></li>
+            <li><a href="#">Продать</a></li>
+            <li><a href="#">Принять оплату</a></li>
+            <li><a href="#">WEB-версия</a></li>
+            <li><a href="#">Заказы и продажи</a></li>
+            <li><a href="#">Деньги</a></li>
+            <li><a href="#">Закупки и склад</a></li>
+            <li><a href="#">Производство</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content-wrap" id="mainContentWrap">
+        <header class="main_header" id='main_header'>
+            <div class='menu-icon' id='menu-icon'>
+                ☰ 
+            </div>
+            <div class='title'>
+                {{title}}
+            </div>
+            <div class='options_icon'>
+                <img src="{% static "deps/icon/options.png" %}" alt="#">
+            </div>
+        </header>
+        
+        <div class='options-bar'>
+            {% block option_bar %}
+            {% endblock option_bar %}
     
-    <div class='options-bar'>
-        {% block option_bar %}
-        {% endblock option_bar %}
-
-    </div>
-    <div class="content">
-        {% block content %}
-        {% endblock content %}
-    </div>
-    <div class="container">
-        <div class="bottom-nav">
-            <button type="button">
-                <a href="{% url "main:index" %}">
-                    <img src="{% static "deps/icon/moves_w.png" %}" alt="Движения">
-                </a>
-            </button> 
-            <button type="button">
-                <a href="{% url "products:products_list" %}">
-                    <img src="{% static "deps/icon/goods_b.png" %}" alt="Товары">
-                </a>
-            </button>
-            <button type="button">
-                <a href="#">
-                    <img src="{% static "deps/icon/statistic_b.png" %}" alt="Статистика">
-                </a>
-            </button>
-            
-            
         </div>
-        
 
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <div class="container">
+            <div class="bottom-nav">
+                <button type="button">
+                    <a href="{% url "main:index" %}">
+                        <img src="{% static "deps/icon/moves_w.png" %}" alt="Движения">
+                    </a>
+                </button> 
+                <button type="button">
+                    <a href="{% url "products:products_list" %}">
+                        <img src="{% static "deps/icon/goods_b.png" %}" alt="Товары">
+                    </a>
+                </button>
+                <button type="button">
+                    <a href="#">
+                        <img src="{% static "deps/icon/statistic_b.png" %}" alt="Статистика">
+                    </a>
+                </button> 
+            </div>
+        </div>
     </div>
-        
-        {% block script %}
-        {% endblock script %}
+    
+    {% comment %} Sidebar script {% endcomment %}
+    <script>
+        $(document).ready(function() {
+            $('#menu-icon').click(function() {
+                $('#sidebar').toggleClass('active');
+                $('#mainContentWrap').toggleClass('shift');
+                $('#main_header').toggleClass('shift');
+            });
+        });
+    </script>
+    {% block script %}
+    {% endblock script %}
     
 </body>
 </html>

@@ -16,11 +16,12 @@ header, footer {
 
 
 .content-wrapper {
-    margin-top: 50px;
+    margin-top: 10px;
     position: relative;
     width: 100%;
     height: calc(100vh - 120px); /* Высота экрана минус высота шапки и футера */
     overflow: hidden;
+    padding-bottom: 50px;
 }
 
 .main-content {

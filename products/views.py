@@ -1,8 +1,4 @@
 
-
-from urllib import request
-from django.forms import BaseModelForm
-from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, TemplateView, UpdateView
 from products.models import Group_of_products, Products
@@ -26,8 +22,6 @@ class GroupCreateView(TitleMixin, CreateView):
     ]
     success_url = reverse_lazy('products:products_list')
 
-
-        
 class ProductTreeListView(TitleMixin, TemplateView):
     """Отображает список товаров по группам"""
     template_name = 'products/products.html'
@@ -52,9 +46,9 @@ class ProductCreateView(TitleMixin,CreateView):
     template_name = 'products/create_product.html'
     success_url = reverse_lazy('products:products_list')
 
-    def form_valid(self, form: BaseModelForm) -> HttpResponse:
-        #some logic
-        return super().form_valid(form)
+    # def form_valid(self, form: BaseModelForm) -> HttpResponse:
+    #     #some logic
+    #     return super().form_valid(form)
 
 class ProductDetailView(TitleMixin,DetailView):
     """Карточка товара"""
@@ -62,7 +56,7 @@ class ProductDetailView(TitleMixin,DetailView):
     model = Products
     context_object_name = 'product'
     template_name = 'products/product_detail.html'
-    
+
 class ProductEditView(TitleMixin, UpdateView):
     """Изменить продукт"""
     title = "Изменить"
@@ -71,9 +65,6 @@ class ProductEditView(TitleMixin, UpdateView):
     context_object_name = 'edit_object'
     template_name = 'products/product_edit.html'
     success_url = reverse_lazy('products:products_list')
-    
-
-
 
 class ProductDeleteView(TitleMixin,DeleteView):
     """Удаляет продукт"""

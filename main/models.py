@@ -13,6 +13,7 @@ class Movements(models.Model):
     description = models.CharField(max_length=200)
     created_timestamp = models.DateTimeField(auto_now_add=True)
     quantity_change = models.IntegerField()
+    
 
     def __str__(self) -> str:
         print(self.created_timestamp, type(self.created_timestamp))

@@ -17,13 +17,15 @@
 
 {% block content %}
         <div class="content-wrapper">
-                {% for movement in movements %}
-                        <li class="item">
-                                <a href="{% url "main:detail" movement.id %}">
-                                        <p>{{movement.movement_type}} - {{ movement.product.name }}--------{{ movement.created_timestamp|date:"d-m-Y" }}</p>
-                                </a>
-                        </li>
-                        
-                {% endfor %}
+                <div class="main-content" id="mainContent">
+                        {% for movement in movements %}
+                                <li class="item">
+                                        <a href="{% url "main:detail" movement.id %}">
+                                                <p>{{movement.movement_type}} - {{ movement.product.name }}--------{{ movement.created_timestamp|date:"d-m-Y" }}</p>
+                                        </a>
+                                </li>
+                                
+                        {% endfor %}
+                </div>
         </div> 
 {% endblock content %}

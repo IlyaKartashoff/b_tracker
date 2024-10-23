@@ -8,6 +8,8 @@ body {
     font-weight: 400;
     font-size: 16px;
     margin: 0;
+    height: auto;
+    overflow: auto;
 
 }
 input, select {
@@ -55,11 +57,11 @@ p {
     border-bottom: 1px solid #dee2e6;
 }
 .content {
-    padding: 50px;
-    padding-top: 100px;
-    padding-left: 140px;
-    padding-bottom: 70px; /* Отступ для bottom-nav */
-    
+    margin-top: 110px; /* Отступ для учета высоты header и top-block */
+    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 50px;
+    overflow: auto;
 }
 .content-hidden {
     transform: translateX(100%); /* Сдвиг вправо */
@@ -82,17 +84,33 @@ p {
     transition: 0.3s;
     padding-top: 60px;
 }
-.sidebar a {
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+}
+.sidebar ul li a {
     padding: 10px 15px;
     text-decoration: none;
     font-size: 18px;
-    color: #000;
+    color: white;
     display: block;
     transition: 0.3s;
 }
 .sidebar a:hover {
-    background-color: #f1f1f1;
+    background-color: #d6e6f8;
 }
+.menu-icon {
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
 .openbtn {
     font-size: 20px;
     cursor: pointer;
@@ -105,9 +123,15 @@ p {
 .openbtn:focus {
     outline: none;
 }
-.main-content {
-    transition: margin-left .3s;
-    padding: 16px;
+.main-content-wrap {
+    transition: margin-left .3s ease;
+}
+.sidebar.active {
+    padding-top: 80px;
+    left: 0;
+}
+.main-content-wrap.shift {
+    margin-left: 180px;
 }
 .section-title {
     margin: 20px 0;
@@ -117,6 +141,7 @@ p {
 .options-bar {
     display: flex;
     gap: 30px;
+    z-index: 100;
 } 
 
 .options-bar .movements-bar a {
