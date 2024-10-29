@@ -22,6 +22,7 @@ from b_tracker.settings import DEBUG
 
 
 urlpatterns = [
+    path('', include('pwa.urls')),
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('products/', include('products.urls')),

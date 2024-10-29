@@ -1,0 +1,19 @@
+{
+    "id": "/",
+    "name": "b_tracker",
+    "short_name": "b_tracker",
+    "description": "Tracks your business",
+    "start_url": "/",
+    "display": "standalone",
+    "scope": "/",
+    "orientation": "any",
+    "background_color": "#000000",
+    "theme_color": "#777b7e",
+    "status_bar": "default",
+    "icons": [{"src": "/static/images/160x160-b-t-icon.png", "sizes": "160x160"}, {"src": "/static/images/192x192-b-t-icon.png", "sizes": "192x192"}, {"src": "/static/images/512x512-b-t-icon.png", "sizes": "512x512"}],
+    "dir": "ltr",
+    "lang": "en-US",
+    "screenshots" : [{"src": "/static/images/splash-750x1334.png", "sizes": "750x1334", "type": "image/png"}, {"src": "/static/images/wide_screen_b_t.png", "sizes": "1920x1079", "type": "image/png", "form_factor": "wide"}],
+    "shortcuts" : []
+  }
+  

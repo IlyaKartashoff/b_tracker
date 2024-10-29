@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import INTERNAL_IPS, STATICFILES_DIRS
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y=ajzos-ss18!#6he)qc96!ybeo1)z%p5(l*=pmvxs1^gmc1&_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','192.168.0.105']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'debug_toolbar',
+    'pwa',
 
     'products',
     'main',
@@ -141,3 +142,57 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# PWA Config
+
+PWA_APP_NAME = 'b_tracker'
+PWA_APP_DESCRIPTION = "Tracks your business"
+PWA_APP_THEME_COLOR = '#777b7e'
+PWA_APP_BACKGROUND_COLOR = '#000000'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/images/160x160-b-t-icon.png',
+        'sizes': '160x160'
+    },
+    {
+        'src': '/static/images/192x192-b-t-icon.png',
+        'sizes': '192x192'
+    },
+    {
+        'src': '/static/images/512x512-b-t-icon.png',
+        'sizes': '512x512'
+    },
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/images/160x160-b-t-icon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/images/splash_icon.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
+PWA_APP_SHORTCUTS = []
+PWA_APP_SCREENSHOTS = [
+    {
+      'src': '/static/images/splash-750x1334.png',
+      'sizes': '750x1334',
+      "type": "image/png"
+    },
+    {
+      'src': '/static/images/wide_screen_b_t.png',
+      'sizes': '1920x1079',
+      "type": "image/png",
+      'form_factor': 'wide'
+    }
+]

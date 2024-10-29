@@ -1,15 +1,18 @@
 {% load static %}
+{% load pwa %}
+
+
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
+    {% progressive_web_app_meta %}
     <title>{{title}}</title>
     
     <link rel="shortcut icon" type="image/svg+xml" href="{% static 'deps/icon/micon.png' %}">
-    
+    <link rel="manifest" href="{% static 'manifest.json' %}">
     <!--Core CSS-->
     <link rel="stylesheet" href="{% static "deps\css\reset.css" %}">
     
