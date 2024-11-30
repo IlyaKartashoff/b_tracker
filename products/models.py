@@ -1,5 +1,6 @@
 
 from django.db import models
+from common.models import TimedBaseModel
 
 
 
@@ -27,7 +28,7 @@ class Group_of_products(models.Model):
     def __str__(self):
         return self.name
 
-class Products(models.Model):
+class Products(TimedBaseModel):
 
     LENGTH_CHOICES = [
         ('20 cm', '20 cm'),
@@ -49,6 +50,7 @@ class Products(models.Model):
     image = models.ImageField(upload_to='product_photos/', blank=True)
     purchase_price = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, verbose_name='Себестоимость')
     sale_price = models.DecimalField(default=0.0, max_digits=7, decimal_places=2, verbose_name='Цена')
+    
 
     class Meta:
         db_table = 'products'

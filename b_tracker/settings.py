@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
+    # third party    
     'debug_toolbar',
     'pwa',
+    'rest_framework',
 
+    # first party
     'products',
     'main',
 ]
@@ -198,3 +201,12 @@ PWA_APP_SCREENSHOTS = [
       'form_factor': 'wide'
     }
 ]
+# rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
